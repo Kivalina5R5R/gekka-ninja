@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lisciafael “幻影”</title>
+<meta name="description" content="คู่มือเด็ค Vanguard ลีเซียเฟล “幻影” (Dragon Empire): การ์ด คอมโบแบบภาพเคลื่อนไหว วิธีเล่น และกฎที่ต้องรู้">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23151331'/%3E%3Ccircle cx='20' cy='20' r='11' fill='%23d23a55'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pridi:wght@500;600&family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Sans+JP:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<script src="data.js" defer></script>
+<script src="content.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#panels">ข้ามไปเนื้อหา</a>
+<header class="hero">
+  <div class="sky" aria-hidden="true">
+    <div class="moon"></div>
+    <img class="hero-art" src="art/full/ride-g3.webp" alt="">
+  </div>
+  <div class="hero-text">
+    <a class="home" href="/">กลับคลังของมิโอะ</a>
+    <h1>Lisciafael “幻影”</h1>
+    <p class="lead">นินจาจันทร์แดงแห่ง Dragon Empire ดูดพวกเข้าโซลเพื่อเรียกตัวใหม่มาตี แล้วเรียกกลับมากันตอนโดนบุก</p>
+    <p class="facts">Standard <span>/</span> Dragon Empire <span>/</span> 50 + Ride Deck 4 <span>/</span> Crit 4, Draw 7, Heal 4, Over 1</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="tab-row" role="tablist">
+    <button role="tab" id="tab-overview" aria-controls="overview" aria-selected="true">Overview</button>
+    <button role="tab" id="tab-combos" aria-controls="combos" aria-selected="false" tabindex="-1">Combos</button>
+    <button role="tab" id="tab-cards" aria-controls="cards" aria-selected="false" tabindex="-1">Cards</button>
+    <button role="tab" id="tab-plan" aria-controls="plan" aria-selected="false" tabindex="-1">Game Plan</button>
+    <button role="tab" id="tab-situations" aria-controls="situations" aria-selected="false" tabindex="-1">Situations</button>
+    <button role="tab" id="tab-rules" aria-controls="rules" aria-selected="false" tabindex="-1">Rules</button>
+  </div>
+</nav>
+
+<main id="panels">
+  <section role="tabpanel" id="overview" aria-labelledby="tab-overview">
+    <h2>How it plays</h2>
+    <div class="flows" id="flows"></div>
+    <h2>Deck list</h2>
+    <figure class="decklist">
+      <a href="deck-list.png" target="_blank" rel="noopener"><img src="deck-list.png" alt="รายการเด็คต้นฉบับภาษาญี่ปุ่น: Ride Deck 4 ใบกับเครสต์ และเด็คหลัก 50 ใบ"></a>
+    </figure>
+  </section>
+
+  <section role="tabpanel" id="combos" aria-labelledby="tab-combos" hidden>
+    <div class="combo-pick" id="combo-pick" role="radiogroup" aria-label="เลือกคอมโบ"></div>
+    <div class="stage">
+      <div class="field" id="field" aria-hidden="true"></div>
+      <div class="stage-side">
+        <h2 id="combo-title"></h2>
+        <ol class="script" id="script"></ol>
+        <div class="controls">
+          <button id="prev" aria-label="ย้อนกลับ">‹</button>
+          <button id="play" class="play">Play</button>
+          <button id="next" aria-label="ถัดไป">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section role="tabpanel" id="cards" aria-labelledby="tab-cards" hidden>
+    <h2>Ride Deck</h2>
+    <ol class="ride-ladder" id="ride-ladder"></ol>
+    <h2>Main Deck <span id="main-total" class="soft"></span></h2>
+    <div class="grade-filter" id="grade-filter" aria-label="กรองตามเกรด"></div>
+    <div class="card-grid" id="card-grid"></div>
+  </section>
+
+  <section role="tabpanel" id="plan" aria-labelledby="tab-plan" hidden>
+    <div class="switch" role="radiogroup" aria-label="เล่นก่อนหรือเล่นหลัง">
+      <button role="radio" aria-checked="true" data-plan="first">Going first</button>
+      <button role="radio" aria-checked="false" data-plan="second">Going second</button>
+    </div>
+    <ol class="turns" id="turns"></ol>
+    <h2>Mulligan</h2>
+    <h3>Keep</h3>
+    <div class="thumbs" id="keep"></div>
+    <h3>Send back</h3>
+    <div class="thumbs" id="toss"></div>
+    <p class="soft" id="mull-note"></p>
+  </section>
+
+  <section role="tabpanel" id="situations" aria-labelledby="tab-situations" hidden>
+    <div class="sits" id="sits"></div>
+  </section>
+
+  <section role="tabpanel" id="rules" aria-labelledby="tab-rules" hidden>
+    <div class="rules" id="rule-list"></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p id="footnote"></p>
+  <details>
+    <summary>Sources</summary>
+    <ul id="sources"></ul>
+  </details>
+</footer>
+
+<dialog id="card-dialog" aria-labelledby="card-name">
+  <button class="close" id="close-card" aria-label="ปิด">×</button>
+  <div class="card-detail" id="card-detail"></div>
+</dialog>
+</body>
+</html>
